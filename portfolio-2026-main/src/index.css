@@ -1,0 +1,819 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Theme custom properties ── */
+:root {
+  /* Dark (default) — deep navy base, indigo + teal accents */
+  --bg:         #030711;
+  --bg2:        #060d1e;
+  --surface:    rgba(255, 255, 255, 0.04);
+  --surface-hv: rgba(255, 255, 255, 0.07);
+  --border:     rgba(255, 255, 255, 0.08);
+  --border-hv:  rgba(255, 255, 255, 0.16);
+  --text:       #e2e8f0;
+  --text-muted: #8896aa;
+  --text-faint: #4a5568;
+  /* accent tokens */
+  --accent:       #6366f1;   /* indigo-500 */
+  --accent-light: #a5b4fc;   /* indigo-300 */
+  --accent2:      #14b8a6;   /* teal-500 */
+  --accent2-light:#2dd4bf;   /* teal-400 */
+}
+
+html.light {
+  /* Light — clean slate white, crisp contrast */
+  --bg:         #f8fafc;
+  --bg2:        #f1f5f9;
+  --surface:    rgba(255, 255, 255, 0.80);
+  --surface-hv: rgba(255, 255, 255, 0.96);
+  --border:     rgba(99, 102, 241, 0.14);
+  --border-hv:  rgba(99, 102, 241, 0.28);
+  --text:       #0f172a;
+  --text-muted: #475569;
+  --text-faint: #94a3b8;
+  --accent:       #4f46e5;
+  --accent-light: #818cf8;
+  --accent2:      #0d9488;
+  --accent2-light:#14b8a6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+/* Custom cursor */
+.cursor {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: #6366f1;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
+  mix-blend-mode: screen;
+}
+
+.cursor-follower {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(139, 92, 246, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.15s ease, width 0.3s, height 0.3s, border-color 0.3s;
+}
+
+/* Scrollbar — hidden but scrolling still works */
+::-webkit-scrollbar { width: 0; height: 0; background: transparent; }
+::-webkit-scrollbar-thumb { background: transparent; }
+html { scrollbar-width: none; -ms-overflow-style: none; }
+
+/* Glass morphism — theme-aware */
+.glass {
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+.glass-strong {
+  background: var(--surface-hv);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid var(--border-hv);
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+/* Glow effects — indigo + teal, toned down */
+.glow-violet {
+  box-shadow: 0 0 18px rgba(99, 102, 241, 0.3), 0 0 40px rgba(99, 102, 241, 0.1);
+}
+.glow-cyan {
+  box-shadow: 0 0 18px rgba(20, 184, 166, 0.28), 0 0 40px rgba(20, 184, 166, 0.1);
+}
+.text-glow-violet {
+  text-shadow: 0 0 16px rgba(99, 102, 241, 0.6);
+}
+.text-glow-cyan {
+  text-shadow: 0 0 16px rgba(20, 184, 166, 0.6);
+}
+
+/* Gradient text — indigo → teal, static */
+.gradient-text {
+  background: linear-gradient(135deg, #a5b4fc 0%, #2dd4bf 55%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-static {
+  background: linear-gradient(135deg, #a5b4fc 0%, #2dd4bf 50%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Site root — replaces the old animated-gradient noise div */
+.site-root {
+  position: relative;
+  background: transparent;  /* body carries the bg colour */
+  z-index: 1;
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.4), transparent);
+}
+
+/* Grid background — hero only, very subtle */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+html.light .grid-bg {
+  background-image:
+    linear-gradient(rgba(79, 70, 229, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 70, 229, 0.06) 1px, transparent 1px);
+}
+
+/* Scrollbar kept hidden in light mode too */
+
+/* Skill progress bar */
+.skill-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #4f46e5, #14b8a6);
+  position: relative;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-fill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2dd4bf;
+  box-shadow: 0 0 10px #2dd4bf;
+}
+
+/* Card 3D tilt */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+/* ── Meteor streak ── */
+.meteor-streak {
+  position: absolute;
+  display: block;
+  width: var(--meteor-len, 120px);
+  height: 1.5px;
+  /* bright white head → transparent tail; angled 215° like a shooting star */
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(200,180,255,0.6) 40%, rgba(255,255,255,0.95) 100%);
+  border-radius: 9999px;
+  transform: rotate(215deg);
+  transform-origin: right center;
+  animation: meteorFall linear infinite;
+  opacity: 0;
+}
+
+/* A tiny bright dot at the head */
+.meteor-streak::after {
+  content: '';
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 6px 2px rgba(165, 180, 252, 0.85);
+}
+
+@keyframes meteorFall {
+  0%   { transform: rotate(215deg) translateX(0);      opacity: 0; }
+  5%   { opacity: 1; }
+  80%  { opacity: 0.8; }
+  100% { transform: rotate(215deg) translateX(-600px); opacity: 0; }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-15px) rotate(1deg); }
+  66% { transform: translateY(-8px) rotate(-1deg); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Orbit animation */
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+
+/* Typing cursor */
+.typing-cursor::after {
+  content: '|';
+  animation: blink 0.7s step-end infinite;
+  color: #6366f1;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Button hover shine */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s ease;
+}
+.btn-shine:hover::before {
+  left: 100%;
+}
+
+/* Three.js canvas */
+canvas {
+  display: block;
+}
+
+/* Section reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tag badge */
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  color: #a5b4fc;
+  transition: all 0.2s ease;
+}
+.tech-badge:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.5);
+}
+
+/* Selection color */
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+  color: #e2e8f0;
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════
+   HIRE ME BUTTON
+═══════════════════════════════════════ */
+
+.hire-me-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  /* size / spacing */
+  padding: 3px;
+  border-radius: 9999px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* rotating conic-gradient border */
+.hire-me-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    #4f46e5 0%,
+    #2dd4bf 25%,
+    #818cf8 50%,
+    #14b8a6 75%,
+    #4f46e5 100%
+  );
+  animation: hireSpin 3s linear infinite;
+  z-index: 0;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes hireSpin {
+  to { --angle: 360deg; }
+}
+
+/* pulsing outer glow ring */
+.hire-me-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    #4f46e544,
+    #14b8a644,
+    #4f46e544
+  );
+  animation: hireSpin 3s linear infinite, hireGlowPulse 2s ease-in-out infinite;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+@keyframes hireGlowPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.08); }
+}
+
+/* inner face */
+.hire-me-face {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #0f0c29, #1a0533, #0d0d2b);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: background 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.hire-me-btn:hover .hire-me-face {
+  background: linear-gradient(135deg, #1a0533, #0d1f4d, #12123d);
+  letter-spacing: 0.07em;
+}
+
+/* sparkle icon — spins on hover */
+.hire-me-icon {
+  color: #a5b4fc;
+  transition: transform 0.4s ease, color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.hire-me-btn:hover .hire-me-icon {
+  transform: rotate(20deg) scale(1.2);
+  color: #2dd4bf;
+}
+
+/* text gradient shimmer */
+.hire-me-text {
+  background: linear-gradient(90deg, #e2e8f0, #a5b4fc, #2dd4bf, #e2e8f0);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShimmer 2.5s ease-in-out infinite;
+}
+
+/* arrow slides right on hover */
+.hire-me-arrow {
+  display: inline-block;
+  color: #2dd4bf;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.hire-me-btn:hover .hire-me-arrow {
+  transform: translateX(5px);
+}
+
+/* ═══════════════════════════════════════
+   GOOGLY EYES CONTACT SECTION
+═══════════════════════════════════════ */
+
+.googly-section {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  padding: 72px 40px 80px;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* Thin horizontal rules */
+.googly-rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #2a2a3a 20%, #2a2a3a 80%, transparent 100%);
+}
+.googly-rule:first-child  { top: 0; }
+.googly-rule:last-child   { bottom: 0; }
+
+/* CLICK TO COPY label */
+.googly-label {
+  position: absolute;
+  top: 22px;
+  left: 36px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: #888;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Copied toast */
+.googly-toast {
+  position: absolute;
+  top: 22px;
+  left: 36px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: #a5b4fc;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* Eyes wrapper */
+.googly-eyes-wrap {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+/* Individual eye (oval) — pure white sclera, real googly-eye style */
+.googly-eye {
+  width: 148px;
+  height: 104px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 36% 28%,
+    #ffffff 0%,
+    #f8f6ff 35%,
+    #ede8ff 65%,
+    #d8d0f8 100%
+  );
+  box-shadow:
+    inset 0 10px 24px rgba(0, 0, 0, 0.38),
+    inset 0 -4px 12px rgba(0, 0, 0, 0.1),
+    0 0 0 5px #0b0b18,
+    0 0 32px rgba(139, 92, 246, 0.12),
+    0 14px 44px rgba(0, 0, 0, 0.85);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform-origin: center center;
+  animation: googlyBlink 4.5s ease-in-out infinite;
+  transition: box-shadow 0.3s ease;
+}
+
+.googly-eye:nth-child(2) {
+  background: radial-gradient(
+    ellipse at 36% 28%,
+    #ffffff 0%,
+    #f6fffe 35%,
+    #e4f9fc 65%,
+    #c8f0f6 100%
+  );
+  box-shadow:
+    inset 0 10px 24px rgba(0, 0, 0, 0.38),
+    inset 0 -4px 12px rgba(0, 0, 0, 0.1),
+    0 0 0 5px #0b0b18,
+    0 0 32px rgba(34, 211, 238, 0.12),
+    0 14px 44px rgba(0, 0, 0, 0.85);
+  animation-delay: 0.14s;
+}
+
+.googly-section:hover .googly-eye:first-child {
+  box-shadow:
+    inset 0 10px 24px rgba(0, 0, 0, 0.38),
+    inset 0 -4px 12px rgba(0, 0, 0, 0.1),
+    0 0 0 5px #0b0b18,
+    0 0 64px rgba(139, 92, 246, 0.6),
+    0 14px 56px rgba(0, 0, 0, 0.85);
+}
+
+.googly-section:hover .googly-eye:nth-child(2) {
+  box-shadow:
+    inset 0 10px 24px rgba(0, 0, 0, 0.38),
+    inset 0 -4px 12px rgba(0, 0, 0, 0.1),
+    0 0 0 5px #0b0b18,
+    0 0 64px rgba(34, 211, 238, 0.55),
+    0 14px 56px rgba(0, 0, 0, 0.85);
+}
+
+/* Pupil — pure black with subtle 3-D depth */
+.googly-pupil {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 34% 32%,
+    #1e1e2e 0%,
+    #06060e 48%,
+    #000 100%
+  );
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+}
+
+.googly-eye:nth-child(2) .googly-pupil {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Specular highlight on pupil */
+.googly-shine {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  top: 7px;
+  left: 7px;
+  filter: blur(1px);
+}
+
+/* Email text — bold, very large */
+.googly-email {
+  font-family: 'Space Grotesk', 'Arial Black', Arial, sans-serif;
+  font-size: clamp(20px, 4.2vw, 72px);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  text-align: center;
+  line-height: 1;
+  color: var(--text);
+  transition: letter-spacing 0.35s ease, color 0.35s ease;
+}
+
+.googly-section:hover .googly-email {
+  letter-spacing: 0.07em;
+  color: #f0ecff;
+}
+
+/* Each letter — inline-block so transform works without reflow */
+.googly-letter {
+  display: inline-block;
+  will-change: transform, opacity;
+  transform-origin: center bottom;
+}
+
+/* Blink keyframes — squishes the eye shut briefly */
+@keyframes googlyBlink {
+  0%, 88%, 100% {
+    transform: scaleY(1);
+  }
+  92% {
+    transform: scaleY(0.04);
+  }
+  95% {
+    transform: scaleY(1);
+  }
+  97% {
+    transform: scaleY(0.04);
+  }
+}
+
+/* ── Falling star — tiny short streak variant ── */
+.falling-star {
+  position: absolute;
+  display: block;
+  width: var(--meteor-len, 26px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(220,210,255,0.5) 50%, rgba(255,255,255,0.9) 100%);
+  border-radius: 9999px;
+  transform: rotate(215deg);
+  transform-origin: right center;
+  animation: meteorFall linear infinite;
+  opacity: 0;
+}
+
+.falling-star::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5px;
+  height: 2.5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 4px 1px rgba(180, 160, 255, 0.7);
+}
+
+/* ── Theme toggle button ── */
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--surface-hv);
+  border-color: var(--border-hv);
+  color: var(--text);
+}
+
+/* ── Light mode global overrides ── */
+
+/* Body background already handled via CSS var on body */
+
+html.light .section-divider {
+  background: linear-gradient(90deg, transparent, rgba(120, 90, 220, 0.3), transparent);
+}
+
+/* Nav bar — shared scrolled state (no border, just blur + soft shadow) */
+.nav-scrolled {
+  background: rgba(6, 10, 28, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.5);
+  border: none;
+}
+
+html.light .nav-scrolled {
+  background: rgba(248, 250, 252, 0.78);
+  box-shadow: 0 6px 20px -10px rgba(79, 70, 229, 0.18);
+  border: none;
+}
+
+/* Light-mode text colour overrides — ensure contrast on slate-50 background */
+html.light .text-white        { color: var(--text)        !important; }
+html.light .text-slate-200    { color: var(--text)        !important; }
+html.light .text-slate-300    { color: var(--text-muted)  !important; }
+html.light .text-slate-400    { color: var(--text-muted)  !important; }
+html.light .text-slate-500    { color: #64748b            !important; }
+
+/* Indigo/teal accent text — the dark-palette shades are too pale on white, darken them */
+html.light .text-violet-300   { color: #4338ca !important; } /* indigo-700 */
+html.light .text-violet-400   { color: #4f46e5 !important; } /* indigo-600 */
+html.light .text-violet-500   { color: #4338ca !important; }
+html.light .text-cyan-300     { color: #0d9488 !important; } /* teal-600 */
+html.light .text-cyan-400     { color: #0f766e !important; } /* teal-700 */
+
+/* Hover variants — keep darker on light bg */
+html.light .hover\:text-violet-300:hover,
+html.light .hover\:text-violet-400:hover { color: #4338ca !important; }
+html.light .hover\:text-white:hover      { color: #0f172a !important; }
+
+/* Hero section light */
+html.light #hero {
+  background: radial-gradient(ellipse at 60% 0%, rgba(167,139,250,0.08) 0%, transparent 70%);
+}
+
+/* About, Skills, Projects, etc. — let body bg show through */
+html.light #about,
+html.light #skills,
+html.light #projects,
+html.light #certifications,
+html.light #contact {
+  background: transparent;
+}
+
+/* Cards and glass surfaces */
+html.light .glass {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 16px rgba(80, 60, 180, 0.07);
+}
+html.light .glass-strong {
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 4px 24px rgba(80, 60, 180, 0.1);
+}
+
+/* Glow reduced in light mode */
+html.light .glow-violet {
+  box-shadow: 0 2px 16px rgba(99, 102, 241, 0.2);
+}
+
+/* Googly section in light */
+html.light .googly-section { background: rgba(235, 232, 255, 0.5); }
+html.light .googly-email   { color: #12112a; }
+html.light .googly-section:hover .googly-email { color: #1e1b3a; }
+html.light .googly-label   { color: #4a4868; }
+html.light .googly-toast   { color: #4f46e5; }
+html.light .googly-rule    { background: linear-gradient(90deg, transparent, rgba(99,102,241,0.28), transparent); }
+
+/* Scrollbar already handled above */
+
+/* Hire Me button in light */
+html.light .hire-me-face {
+  background: rgba(255, 255, 255, 0.92);
+  color: #3730a3;
+}
+html.light .hire-me-btn:hover .hire-me-face {
+  background: linear-gradient(135deg, #eef2ff, #ccfbf1, #e0e7ff);
+}
+html.light .hire-me-text {
+  background: linear-gradient(90deg, #3730a3, #4f46e5, #0d9488, #3730a3);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+html.light .hire-me-icon  { color: #4f46e5; }
+html.light .hire-me-arrow { color: #0d9488; }
+
+/* Availability badge / accent pills in light mode */
+html.light .bg-violet-500\/15 { background-color: rgba(79, 70, 229, 0.12) !important; }
+html.light .bg-cyan-500\/15   { background-color: rgba(13, 148, 136, 0.12) !important; }
+html.light .bg-violet-500\/10 { background-color: rgba(79, 70, 229, 0.10) !important; }
+
+/* Meteors slightly less bright in light mode */
+html.light .meteor-streak,
+html.light .falling-star {
+  opacity: 0;
+  animation-play-state: paused;
+}
