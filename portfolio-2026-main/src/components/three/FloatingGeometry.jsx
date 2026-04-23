@@ -82,7 +82,7 @@ function GlowSphere() {
   })
   return (
     <mesh ref={ref}>
-      <sphereGeometry args={[0.85, 64, 64]} />
+      <sphereGeometry args={[0.85, 32, 32]} />
       <MeshDistortMaterial
         color="#1e1b4b"
         emissive="#4f46e5"

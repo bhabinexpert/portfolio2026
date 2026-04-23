@@ -1,12 +1,10 @@
-import { Suspense, lazy } from 'react'
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { Github, Linkedin, Instagram, Download, ArrowDown, Mail, Sparkles } from 'lucide-react'
 import { personal, socials, roles } from '../data/portfolio'
+import Scene3D from './three/Scene3D'
 
 const CV_PATH = personal.cv ?? '/Bhabin Dulal CV.pdf'
-
-const Scene3D = lazy(() => import('./three/Scene3D'))
 
 const typeSequence = roles.flatMap((r) => [r, 2000])
 
@@ -22,9 +20,7 @@ export default function Hero() {
     >
       {/* 3D Canvas Background */}
       <div className="absolute inset-0 z-0">
-        <Suspense fallback={null}>
-          <Scene3D />
-        </Suspense>
+        <Scene3D />
       </div>
 
       {/* Radial gradient overlays */}

@@ -13,7 +13,7 @@ export default function Scene3D() {
     >
       <PerspectiveCamera makeDefault position={[0, 0, 7]} fov={60} />
       <Suspense fallback={null}>
-        <ParticleField count={2500} />
+        <ParticleField count={1400} />
         <FloatingGeometry />
       </Suspense>
       <OrbitControls
