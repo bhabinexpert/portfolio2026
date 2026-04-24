@@ -196,9 +196,47 @@ export default function Hero() {
             sub="Damak, Jhapa"
             color="cyan"
           />
-          {/* Center ring */}
-          <div className="w-48 h-48 rounded-full border border-violet-500/10 absolute" />
-          <div className="w-64 h-64 rounded-full border border-cyan-500/8 absolute" />
+          {/* ── Decorative orbital ring system ── */}
+          {/* Soft central bloom */}
+          <div className="absolute inset-0 m-auto w-80 h-80 rounded-full orbit-glow pointer-events-none" />
+
+          {/* Outer rotating arc ring */}
+          <motion.div
+            className="absolute inset-0 m-auto w-80 h-80 orbit-ring orbit-ring--outer"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 32, repeat: Infinity, ease: 'linear' }}
+          />
+
+          {/* Middle counter-rotating arc ring */}
+          <motion.div
+            className="absolute inset-0 m-auto w-64 h-64 orbit-ring orbit-ring--mid"
+            animate={{ rotate: -360 }}
+            transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
+          />
+
+          {/* Inner dashed breathing ring */}
+          <motion.div
+            className="absolute inset-0 m-auto w-48 h-48 rounded-full border border-dashed border-violet-400/25 pointer-events-none"
+            animate={{ scale: [1, 1.04, 1], opacity: [0.55, 0.85, 0.55] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+          />
+
+          {/* Orbiting accent dots */}
+          <motion.div
+            className="absolute inset-0 m-auto w-80 h-80 pointer-events-none"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+          >
+            <span className="orbit-dot orbit-dot--cyan" />
+          </motion.div>
+
+          <motion.div
+            className="absolute inset-0 m-auto w-64 h-64 pointer-events-none"
+            animate={{ rotate: -360 }}
+            transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
+          >
+            <span className="orbit-dot orbit-dot--violet" />
+          </motion.div>
         </motion.div>
       </div>
 
