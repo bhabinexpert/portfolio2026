@@ -25,12 +25,12 @@ function CertCard({ cert, index }) {
       <div className="p-5">
         {/* Icon + issuer */}
         <div className="flex items-start justify-between mb-3">
-          <div
+          {/* <div
             className="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
             style={{ background: `${cert.color}15`, border: `1px solid ${cert.color}30` }}
           >
             {cert.icon}
-          </div>
+          </div> */}
           <span
             className="flex items-center gap-1 text-xs font-mono px-2 py-1 rounded-full"
             style={{ background: `${cert.color}12`, color: cert.color, border: `1px solid ${cert.color}25` }}

@@ -43,7 +43,9 @@ function SkillCard({ skill, index }) {
         {/* Icon & name */}
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <span className="text-xl">{skill.icon}</span>
+            <span className="text-xl">
+              {skill.icon}
+              </span>
             <span className="text-white font-semibold text-sm">{skill.name}</span>
           </div>
           <span className={`${colors.text} font-mono text-xs font-bold`}>{skill.level}%</span>

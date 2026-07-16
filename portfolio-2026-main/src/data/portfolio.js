@@ -21,40 +21,40 @@ export const socials = {
 
 export const skills = [
   // Frontend
-  { name: 'HTML / CSS', level: 90, category: 'frontend', icon: '🎨' },
-  { name: 'JavaScript', level: 70, category: 'frontend', icon: '⚡' },
-  { name: 'React', level: 65, category: 'frontend', icon: '⚛️' },
-  { name: 'Tailwind CSS', level: 75, category: 'frontend', icon: '🌊' },
-  { name: 'TypeScript', level: 55, category: 'frontend', icon: '📘' },
+  { name: 'HTML / CSS', level: 90, category: 'frontend', icon: '' },
+  { name: 'JavaScript', level: 70, category: 'frontend', icon: '' },
+  { name: 'React', level: 65, category: 'frontend', icon: '' },
+  { name: 'Tailwind CSS', level: 75, category: 'frontend', icon: '' },
+  { name: 'TypeScript', level: 55, category: 'frontend', icon: '' },
   // Backend
-  { name: 'Node.js', level: 70, category: 'backend', icon: '🟢' },
-  { name: 'Express', level: 65, category: 'backend', icon: '🚂' },
-  { name: 'MongoDB', level: 70, category: 'backend', icon: '🍃' },
-  { name: 'PostgreSQL', level: 60, category: 'backend', icon: '🐘' },
-  { name: 'MySQL', level: 55, category: 'backend', icon: '🗄️' },
-  { name: 'Python', level: 65, category: 'backend', icon: '🐍' },
-  { name: 'Java', level: 55, category: 'backend', icon: '☕' },
-  { name: 'REST APIs', level: 70, category: 'backend', icon: '🔌' },
+  { name: 'Node.js', level: 70, category: 'backend', icon: '' },
+  { name: 'Express', level: 65, category: 'backend', icon: '' },
+  { name: 'MongoDB', level: 70, category: 'backend', icon: '' },
+  { name: 'PostgreSQL', level: 60, category: 'backend', icon: '' },
+  { name: 'MySQL', level: 55, category: 'backend', icon: '' },
+  { name: 'Python', level: 65, category: 'backend', icon: '' },
+  { name: 'Java', level: 55, category: 'backend', icon: '' },
+  { name: 'REST APIs', level: 70, category: 'backend', icon: '' },
   // Data & Analytics
-  { name: 'NumPy', level: 60, category: 'data', icon: '🔢' },
-  { name: 'Pandas', level: 65, category: 'data', icon: '🐼' },
-  { name: 'Matplotlib', level: 60, category: 'data', icon: '📊' },
-  { name: 'Power BI', level: 55, category: 'data', icon: '📈' },
+  { name: 'NumPy', level: 60, category: 'data', icon: '' },
+  { name: 'Pandas', level: 65, category: 'data', icon: '' },
+  { name: 'Matplotlib', level: 60, category: 'data', icon: '' },
+  { name: 'Power BI', level: 55, category: 'data', icon: '' },
   // Design
-  { name: 'Figma', level: 70, category: 'design', icon: '🎭' },
-  { name: 'Canva', level: 80, category: 'design', icon: '🖌️' },
+  { name: 'Figma', level: 70, category: 'design', icon: '' },
+  { name: 'Canva', level: 80, category: 'design', icon: '' },
   // AI & Agents
-  { name: 'Claude / Anthropic', level: 75, category: 'ai', icon: '🤖' },
-  { name: 'ChatGPT / OpenAI', level: 75, category: 'ai', icon: '🧠' },
-  { name: 'Gemini', level: 65, category: 'ai', icon: '✨' },
-  { name: 'AI Agent Design', level: 60, category: 'ai', icon: '🕹️' },
-  { name: 'Prompt Engineering', level: 70, category: 'ai', icon: '💬' },
+  { name: 'Claude / Anthropic', level: 75, category: 'ai', icon: '' },
+  { name: 'ChatGPT / OpenAI', level: 75, category: 'ai', icon: '' },
+  { name: 'Gemini', level: 65, category: 'ai', icon: '' },
+  { name: 'AI Agent Design', level: 60, category: 'ai', icon: '' },
+  { name: 'Prompt Engineering', level: 70, category: 'ai', icon: '' },
   // Tools
-  { name: 'Git / GitHub', level: 90, category: 'tools', icon: '🔧' },
-  { name: 'VS Code', level: 95, category: 'tools', icon: '💻' },
-  { name: 'IntelliJ IDEA', level: 65, category: 'tools', icon: '🧩' },
-  { name: 'Postman', level: 80, category: 'tools', icon: '📮' },
-  { name: 'AWS', level: 45, category: 'tools', icon: '☁️' },
+  { name: 'Git / GitHub', level: 90, category: 'tools', icon: '' },
+  { name: 'VS Code', level: 95, category: 'tools', icon: '' },
+  { name: 'IntelliJ IDEA', level: 65, category: 'tools', icon: '' },
+  { name: 'Postman', level: 80, category: 'tools', icon: '' },
+  { name: 'AWS', level: 45, category: 'tools', icon: '' },
 ]
 
 // preview.type: 'browser' | 'terminal' | 'dashboard' | 'mobile'
@@ -71,7 +71,7 @@ export const projects = [
     live: 'https://nagar-sewa.netlify.app/',
     color: '#f59e0b',
     featured: true,
-    preview: { type: 'browser', accent: '#f59e0b', emoji: '🏛️', lines: ['Issue Report Filed', 'Ward 3 — Damak Municipality', 'Status: Under Review ✓', 'Civic Campaign Active'] },
+    preview: { type: 'browser', accent: '#f59e0b', emoji: '', lines: ['Issue Report Filed', 'Ward 3 — Damak Municipality', 'Status: Under Review ✓', 'Civic Campaign Active'] },
   },
   {
     id: 2,
@@ -85,7 +85,7 @@ export const projects = [
     live: 'https://electionresult-2082.netlify.app/',
     color: '#ef4444',
     featured: true,
-    preview: { type: 'dashboard', accent: '#ef4444', emoji: '🗳️', lines: ['Province 1 — 42 Candidates', 'Total Votes: 1,284,320', 'Party Distribution Chart', 'Filter by District →'] },
+    preview: { type: 'dashboard', accent: '#ef4444', emoji: '', lines: ['Province 1 — 42 Candidates', 'Total Votes: 1,284,320', 'Party Distribution Chart', 'Filter by District →'] },
   },
   {
     id: 3,
@@ -99,7 +99,7 @@ export const projects = [
     live: 'https://notelekhum.netlify.app/',
     color: '#8b5cf6',
     featured: true,
-    preview: { type: 'browser', accent: '#8b5cf6', emoji: '📓', lines: ['My Notes (12)', '+ New Note', 'JavaScript Revision ✎', 'React Hooks Summary ✎'] },
+    preview: { type: 'browser', accent: '#8b5cf6', emoji: '', lines: ['My Notes (12)', '+ New Note', 'JavaScript Revision ✎', 'React Hooks Summary ✎'] },
   },
   {
     id: 4,
@@ -113,7 +113,7 @@ export const projects = [
     live: 'https://gyankosh-lms.netlify.app/',
     color: '#06b6d4',
     featured: false,
-    preview: { type: 'browser', accent: '#06b6d4', emoji: '📚', lines: ['Borrow Read Learn!!!', 'Transform Your Knowledge', '1000+ Books Available', 'Start Borrowing Free →'] },
+    preview: { type: 'browser', accent: '#06b6d4', emoji: '', lines: ['Borrow Read Learn!!!', 'Transform Your Knowledge', '1000+ Books Available', 'Start Borrowing Free →'] },
   },
   {
     id: 5,
@@ -127,7 +127,7 @@ export const projects = [
     live: null,
     color: '#ec4899',
     featured: false,
-    preview: { type: 'dashboard', accent: '#ec4899', emoji: '🎬', lines: ['Trending Movies 🔥', '#1 Bāhubali  #2 Avatar', '#3 Squid Game', 'Search any movie...'] },
+    preview: { type: 'dashboard', accent: '#ec4899', emoji: '', lines: ['Trending Movies 🔥', '#1 Bāhubali  #2 Avatar', '#3 Squid Game', 'Search any movie...'] },
   },
   {
     id: 6,
@@ -141,7 +141,7 @@ export const projects = [
     live: null,
     color: '#f97316',
     featured: false,
-    preview: { type: 'terminal', accent: '#f97316', emoji: '🏋️', lines: ['GymTrack v1.0', '> Member: Ram Thapa', '> Plan: Premium (3mo)', '> Fee Paid: ✓  Active'] },
+    preview: { type: 'terminal', accent: '#f97316', emoji: '', lines: ['GymTrack v1.0', '> Member: Ram Thapa', '> Plan: Premium (3mo)', '> Fee Paid: ✓  Active'] },
   },
   {
     id: 7,
@@ -155,7 +155,7 @@ export const projects = [
     live: null,
     color: '#10b981',
     featured: false,
-    preview: { type: 'terminal', accent: '#10b981', emoji: '🛒', lines: ['*** WE CARE SKIN PRODUCTS ***', '1. View Products', '3. Restock Items', '> Bill Generated: Rs.450'] },
+    preview: { type: 'terminal', accent: '#10b981', emoji: '', lines: ['*** WE CARE SKIN PRODUCTS ***', '1. View Products', '3. Restock Items', '> Bill Generated: Rs.450'] },
   },
 ]
 
@@ -192,7 +192,7 @@ export const certifications = [
     issuer: 'AWS Training & Certification',
     date: 'August 24, 2025',
     description: 'Completed training on prompt engineering fundamentals, best practices, and techniques for working with AI language models.',
-    icon: '☁️',
+    icon: '',
     color: '#f59e0b',
   },
   {
@@ -200,7 +200,7 @@ export const certifications = [
     issuer: 'Innovation Lab, Itahari International College',
     date: 'June 23 – August 29, 2025',
     description: 'Completed intensive training in full-stack web development and MERN-based project development.',
-    icon: '🌐',
+    icon: '',
     color: '#8b5cf6',
   },
   {
@@ -208,7 +208,7 @@ export const certifications = [
     issuer: 'GeeksforGeeks',
     date: '2025',
     description: 'Completed an 8-week certification course focusing on component-based development, hooks, and frontend architecture.',
-    icon: '⚛️',
+    icon: '',
     color: '#06b6d4',
   },
   {
@@ -216,18 +216,18 @@ export const certifications = [
     issuer: 'GeeksforGeeks',
     date: '2025',
     description: 'Completed an 8-week course covering core JavaScript concepts, ES6+ features, DOM manipulation, and practical application development.',
-    icon: '⚡',
+    icon: '',
     color: '#10b981',
   },
 ]
 
 export const softSkills = [
-  { label: 'Communication & Presentation', icon: '🗣️' },
-  { label: 'Team Collaboration & Adaptability', icon: '🤝' },
-  { label: 'Time Management & Prioritization', icon: '⏱️' },
-  { label: 'Leadership & Initiative', icon: '🚀' },
-  { label: 'Continuous Learning', icon: '📖' },
-  { label: 'Problem Solving', icon: '🧩' },
+  { label: 'Communication & Presentation', icon: '' },
+  { label: 'Team Collaboration & Adaptability', icon: '' },
+  { label: 'Time Management & Prioritization', icon: '⏱' },
+  { label: 'Leadership & Initiative', icon: '' },
+  { label: 'Continuous Learning', icon: '' },
+  { label: 'Problem Solving', icon: '' },
 ]
 
 export const roles = [

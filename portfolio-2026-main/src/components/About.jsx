@@ -155,21 +155,21 @@ export default function About() {
             <motion.div variants={itemVariants} className="space-y-3">
               {[
                 {
-                  icon: <span className="text-lg">🌐</span>,
+                  // icon: <span className="text-lg">🌐</span>,
                   title: 'Web Development',
                   desc: 'Building responsive, user-friendly apps with React and modern CSS frameworks.',
                   color: 'from-violet-600/20 to-violet-600/5',
                   border: 'border-violet-500/20',
                 },
                 {
-                  icon: <span className="text-lg">🔧</span>,
+                  // icon: <span className="text-lg">🔧</span>,
                   title: 'Backend Engineering',
                   desc: 'Designing secure, scalable APIs with Node.js, Express, and MongoDB.',
                   color: 'from-cyan-600/20 to-cyan-600/5',
                   border: 'border-cyan-500/20',
                 },
                 {
-                  icon: <span className="text-lg">🤖</span>,
+                  // icon: <span className="text-lg">🤖</span>,
                   title: 'AI & Machine Learning',
                   desc: 'Exploring ML concepts, combining intelligence with development.',
                   color: 'from-emerald-600/20 to-emerald-600/5',
@@ -180,9 +180,9 @@ export default function About() {
                   key={item.title}
                   className={`glass rounded-xl p-4 border ${item.border} bg-gradient-to-r ${item.color} flex items-start gap-4 group hover:scale-[1.02] transition-transform duration-300`}
                 >
-                  <div className="w-9 h-9 rounded-lg glass flex items-center justify-center flex-shrink-0">
+                  {/* <div className="w-9 h-9 rounded-lg glass flex items-center justify-center flex-shrink-0">
                     {item.icon}
-                  </div>
+                  </div> */}
                   <div>
                     <h4 className="text-white font-semibold text-sm mb-0.5">{item.title}</h4>
                     <p className="text-slate-400 text-xs leading-relaxed">{item.desc}</p>
@@ -207,7 +207,7 @@ export default function About() {
               <div className="grid grid-cols-2 gap-2">
                 {softSkills.map((s) => (
                   <div key={s.label} className="flex items-center gap-2 text-xs text-slate-300">
-                    <span className="text-sm">{s.icon}</span>
+                    {/* <span className="text-sm">{s.icon}</span> */}
                     <span className="leading-tight">{s.label}</span>
                   </div>
                 ))}

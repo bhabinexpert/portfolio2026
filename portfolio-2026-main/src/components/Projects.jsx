@@ -277,7 +277,7 @@ export default function Projects() {
           </h2>
           <div className="section-divider w-24 mx-auto mb-4" />
           <p className="text-slate-400 max-w-lg mx-auto text-sm leading-relaxed">
-            {projects.length} projects — full-stack web apps, civic tech, data dashboards, Java GUIs, and CLI tools.
+            {projects.length} projects, full-stack web apps, civic tech, data dashboards, Java GUIs, and CLI tools.
           </p>
         </motion.div>
 
