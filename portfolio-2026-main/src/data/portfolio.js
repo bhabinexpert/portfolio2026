@@ -98,7 +98,7 @@ export const projects = [
     github: 'https://github.com/bhabinexpert/NoteBook',
     live: 'https://notelekhum.netlify.app/',
     color: '#8b5cf6',
-    featured: true,
+    featured: false,
     preview: { type: 'browser', accent: '#8b5cf6', emoji: '📓', lines: ['My Notes (12)', '+ New Note', 'JavaScript Revision ✎', 'React Hooks Summary ✎'] },
   },
   {
