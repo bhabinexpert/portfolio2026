@@ -171,8 +171,22 @@ export const projects = [
     featured: true,
     preview: { type: 'dashboard', accent: '#c8102e', emoji: '💼', lines: ['247 Jobs · 10 Sources', 'Match Score: 82%', 'Required Skills: 4/5 ✓', 'Live Feed — Updated 3s ago'] },
   },
-  {
+    {
     id: 9,
+    title: 'Multi-Agent Research System',
+    subtitle: 'AI-Powered Research Intelligence',
+    year: '2026',
+    description:
+      'Multi-agent AI research platform that autonomously plans, searches, and synthesizes information on any topic. Coordinated agents break down a query, gather sources, cross-check findings, and generate a structured research report — with a transparent pipeline that shows each agent\'s reasoning step instead of a single black-box answer.',
+    tech: ['Python', 'Streamlit', 'LLM Agents', 'Multi-Agent Orchestration', 'Prompt Engineering'],
+    github: 'https://github.com/bhabinexpert/Multi-Agent-Research-System',
+    live: 'https://researchintelligence.streamlit.app/',
+    color: '#3b82f6',
+    featured: true,
+    preview: { type: 'dashboard', accent: '#3b82f6', emoji: '🔎', lines: ['Research Query Received', 'Agents: Planner ✓ Search ✓', 'Sources Cross-Checked: 12', 'Report Drafted — 4 Sections'] },
+  },
+  {
+    id: 10,
     title: 'Mood Predictor',
     subtitle: 'Text-Based Sentiment Classifier',
     year: '2026',
